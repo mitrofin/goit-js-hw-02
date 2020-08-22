@@ -1,21 +1,21 @@
-const orderPieces = 6;
+function formatString(string, maxLength = 40) {
+  // Write code under this line
+  let maxString = string.split(''); //делаем массив
 
-const credits = 23580;
-const pricePerDroid = 3000;
-const CANCELED_BY_USER = 'Отменено пользователем!';
-const ACCESS_DENIED = 'Недостаточно средств на счету!';
-
-let totalPrice = orderPieces * pricePerDroid; // Write code on this line
-let balanceCredit = credits - totalPrice; // Write code on this line
-let message;
-
-// Write code under this line
-if (orderPieces === null) {
-  message = CANCELED_BY_USER;
-} else if (totalPrice > credits) {
-  message = ACCESS_DENIED;
-} else if (totalPrice <= credits && totalPrice >= 0) {
-  message = `Вы купили ${orderPieces} дроидов, на счету осталось ${balanceCredit} кредитов`;
+  if (maxString.length > maxLength) {
+    // если длиннна строк больше = делаем 40
+    maxString.length = maxLength;
+    return maxString.join('') + '...'; // выводим строку макс 40 + ...
+  } else {
+    return maxString.join(''); //выводим строку
+  }
 }
 
-console.log(message);
+console.log(formatString('Curabitur ligula sapien, tincidunt non.'));
+// 'Curabitur ligula sapien, tincidunt non.'
+
+console.log(formatString('Vestibulum facilisis, purus nec pulvinar iaculis.'));
+
+console.log(
+  formatString('Vestibulum facilisis, purus nec pulvinar iaculis.', 30),
+);
